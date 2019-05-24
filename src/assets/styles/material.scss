@@ -1,0 +1,242 @@
+//Variables
+$terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" #0000001f, "text" #ffffff,
+  "alterntive-primary" #fff20099, "dialog" #252222;
+
+//Mixins
+@mixin matRadio($color) {
+  .mat-radio-button {
+    .mat-radio-inner-circle {
+      background-color: nth($color, 2) !important;
+    }
+    &.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+      border-color: nth($color, 2) !important;
+    }
+    .mat-ripple-element {
+      background-color: nth($color, 2) !important;
+    }
+  }
+}
+
+@mixin matSelectPanel($textColor, $bgColor, $textSelected, $textActive) {
+  .mat-select-panel {
+    background: nth($bgColor, 2) !important;
+    .mat-option {
+      color: nth($textColor, 2) !important;
+      &.mat-selected:not(.mat-option-multiple) {
+        color: nth($textSelected, 2) !important;
+      }
+      &.mat-active {
+        color: nth($textActive, 2) !important;
+      }
+    }
+  }
+}
+
+@mixin matSlider($color) {
+  .mat-slider {
+    .mat-slider-track-fill {
+      background-color: nth($color, 2) !important;
+    }
+    .mat-slider-thumb {
+      background-color: nth($color, 2) !important;
+    }
+  }
+}
+
+@mixin matSlideToggle($color, $background) {
+  .mat-slide-toggle {
+    &.mat-checked .mat-slide-toggle-bar {
+      background-color: nth($background, 2) !important;
+      .mat-slide-toggle-thumb {
+        background-color: nth($color, 2) !important;
+      }
+    }
+    .mat-ripple-element {
+      background-color: nth($color, 2) !important;
+    }
+  }
+}
+
+@mixin matDatePicker($textColor, $bgColor, $border, $selectedBorder) {
+  .mat-datepicker-content {
+    background-color: nth($bgColor, 2);
+    color: nth($textColor, 2);
+    .mat-calendar-header {
+      .mat-calendar-arrow {
+        border-top-color: nth($textColor, 2);
+      }
+      .mat-icon-button {
+        color: nth($textColor, 2) !important;
+      }
+    }
+    .mat-calendar-content {
+      .mat-calendar-table-header {
+        color: nth($textColor, 2);
+      }
+      .mat-calendar-body {
+        tr {
+          td {
+            color: nth($textColor, 2);
+            .mat-calendar-body-cell-content {
+              color: nth($textColor, 2);
+            }
+            .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+              border-color: nth($border, 2);
+            }
+            .mat-calendar-body-selected {
+              &.mat-calendar-body-today {
+                border-color: nth($border, 2);
+                box-shadow: none !important;
+              }
+              background-color: nth($selectedBorder, 2);
+              color: nth($border, 2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin matCheckbox($color) {
+  .mat-checkbox {
+    &.mat-checkbox-checked .mat-checkbox-background {
+      background-color: nth($color, 2) !important;
+    }
+    .mat-ripple-element {
+      background-color: nth($color, 2) !important;
+    }
+  }
+}
+
+@mixin matMenuPanel($textColor, $background) {
+  .mat-menu-panel {
+    background: nth($background, 2);
+    .mat-menu-item {
+      color: nth($textColor, 2);
+    }
+  }
+}
+
+@mixin matAutocompletePanel($textColor, $background, $selected) {
+  .mat-autocomplete-panel {
+    background: nth($background, 2) !important;
+    .mat-option {
+      color: nth($textColor, 2) !important;
+      &.mat-selected:not(.mat-active):not(:hover) {
+        background: nth($selected, 2);
+      }
+    }
+  }
+}
+
+@mixin matBottomSheetContainer($textColor, $background) {
+  .mat-bottom-sheet-container {
+    background: nth($background, 2) !important;
+    .mat-list-base .mat-list-item {
+      color: nth($textColor, 2) !important;
+    }
+  }
+}
+
+@mixin matDialogContainer($textColor, $background, $input) {
+  .mat-dialog-container {
+    @include matCheckbox(nth($terg-colors, 1));
+    background: nth($background, 2) !important;
+    color: nth($textColor, 2) !important;
+    .mat-form-field {
+        color: nth($input, 2);
+    }
+    .mat-input-element {
+      caret-color: nth($textColor, 2) !important;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+      color: nth($input, 2);
+    }
+    .mat-form-field-underline {
+      background-color: nth($input, 2) !important;
+      .mat-form-field-ripple {
+        background-color: inherit !important;
+      }
+    }
+    .mat-form-field.mat-focused {
+      .mat-form-field-ripple {
+        background-color: nth($textColor, 2) !important;
+      }
+      .mat-form-field {
+        background-color: nth($textColor, 2);
+      }
+      .mat-form-field-label {
+        color: nth($textColor, 2) !important;
+      }
+    }
+    @include matSelect(nth($terg-colors, 5), nth($terg-colors, 1));
+  }
+}
+
+@mixin matSelect($def, $color) {
+  .mat-select {
+    .mat-select-value {
+      color: nth($def, 2);
+    }
+    .mat-select-arrow {
+      color: nth($def, 2);
+    }
+  }
+  .mat-form-field.mat-focused.mat-primary {
+    .mat-select-arrow {
+      color: nth($color, 2) !important;
+    }
+  }
+}
+
+@mixin inputTypeFile($textColor, $background) {
+  .mat-terg-input-file-container {
+    background: nth($background, 2);
+    color: nth($textColor, 2);
+    display: inline-block;
+    border-radius: 4px;
+    width: -webkit-fill-available;
+    height: auto;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    &:hover {
+      cursor: pointer;
+    }
+    .mat-terg-input-file-placeholder {
+      text-align: center;
+      vertical-align: middle;
+      line-height: 60px;
+      display: inline-block;
+      width: inherit;
+      height: inherit;
+    }
+    .mat-terg-input-file {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute !important;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+}
+//Main
+html,
+body {
+  @include matRadio(nth($terg-colors, 1));
+  @include matSelectPanel(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 1), nth($terg-colors, 6));
+  @include matSlider(nth($terg-colors, 1));
+  @include matSlideToggle(nth($terg-colors, 1), nth($terg-colors, 6));
+  @include matDatePicker(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 1), nth($terg-colors, 4));
+  @include matCheckbox(nth($terg-colors, 1));
+  @include matMenuPanel(nth($terg-colors, 5), nth($terg-colors, 2));
+  @include matAutocompletePanel(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 3));
+  @include matBottomSheetContainer(nth($terg-colors, 5), nth($terg-colors, 2));
+  @include matDialogContainer(nth($terg-colors, 1), nth($terg-colors, 7), nth($terg-colors, 5));
+  @include inputTypeFile(nth($terg-colors, 5), nth($terg-colors, 2));
+}

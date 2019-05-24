@@ -1,0 +1,34 @@
+<mat-toolbar class="topbar" color="primary">
+    <span class="line top"></span>
+    <!-- Logo -->
+    <div class="logo-container">
+        <a class="home-routelink" routes [routerLink]="['/']">
+            <img src="assets/images/meLogo.png">
+        </a>
+    </div>
+    <!-- Menu-Icon -->
+    <div class="menu-container border">
+        <button sidebar color="primary" mat-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <!-- Info -->
+    <div class="info-container">
+        <span [class]="infoAnimation">{{textInfo}}</span>
+    </div>
+    <!-- Name -->
+    <div class="app-name-container border">
+        <p hello>{{appName}}</p>
+    </div>
+    <!-- Hello -->
+    <div class="hello-container border">
+        <p>Witaj w aplikacji {{appName}}!</p>
+    </div>
+    <!-- Logout -->
+    <div class="logout-container border">
+        <button color="primary" mat-button>
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+    <span class="line bot"></span>
+</mat-toolbar>

@@ -1,0 +1,44 @@
+//Mixin
+@mixin prealoder() {
+  .preloader {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: #303030;
+    mat-spinner {
+      width: 40px;
+      height: 40px;
+      top: 35%;
+      position: relative;
+      margin: 100px auto;
+    }
+  }
+}
+//Main style
+
+.spinner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    @include prealoder();
+    &.true {
+      display: block;
+      z-index: -1;
+    }
+    &.false {
+      z-index: -1;
+      display: none;
+    }
+  }
+}

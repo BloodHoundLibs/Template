@@ -1,0 +1,18 @@
+//Imports
+@import "~@angular/material/theming";
+@import "./adaptive.scss";
+@import "./app.scss";
+@import "./content.scss";
+@import "./topbar.scss";
+@import "./sidebar.scss";
+@import "./spinner.scss";
+@import "./material.scss";
+//Colors
+.color {
+  @import "./colors/terg.scss";
+  @include angular-material-theme($terg-app-theme);
+}
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins"
+);
+@include mat-core($custom-typography);

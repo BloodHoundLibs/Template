@@ -1,0 +1,15 @@
+<div [class]="positionAxis">
+    <div class="sidebar-container close-sidebar">
+        <mat-list role="list" color="primary">
+            <mat-list-item *ngFor="let menuItem of menuItems.getMenuItem() | async">
+                <a class="clear sidebar-list-item" matRipple routes [routerLink]="menuItem.routerLink"
+                    *ngIf="menuItem.type === 'routerLink'">
+                    <span class="is-active"></span>
+                    <span class="name">{{ menuItem.name }}</span>
+                    <mat-icon color="primary">{{ menuItem.icon }}</mat-icon>
+                    <mat-divider></mat-divider>
+                </a>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

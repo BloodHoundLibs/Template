@@ -1,0 +1,21 @@
+//Mixins
+@mixin pageWrapper() {
+  .page-wrapper {
+    background-color: #242424;
+    height: calc(100vh - 44px);
+    .page-content {
+      padding: 10px;
+      height: -webkit-fill-available;
+      overflow: auto;
+    }
+  }
+}
+//Main style
+content .vertical {
+  margin-left: 50px;
+  @include pageWrapper();
+}
+
+content .horizontal {
+  @include pageWrapper();
+}
