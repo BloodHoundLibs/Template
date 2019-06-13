@@ -6,26 +6,55 @@
             <img src="assets/images/meLogo.png">
         </a>
     </div>
+    <!-- Home Button -->
+    <div class="home-container">
+        <a class="home-routelink" routes [routerLink]="['/']">
+            <button color="primary" mat-button>
+                <mat-icon>home</mat-icon>
+            </button>
+        </a>
+    </div>
     <!-- Menu-Icon -->
-    <div class="menu-container border">
-        <button sidebar color="primary" mat-button>
-            <mat-icon>menu</mat-icon>
-        </button>
+    <div class="menu-container border-container">
+        <div class="border bottom right">
+            <button (click)="ifSticky()" class="border-element" activation [activator]="'.sidebar-container'"
+                [isActive]="true" color="primary" mat-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
     </div>
     <!-- Info -->
     <div class="info-container">
-        <span [class]="infoAnimation">{{textInfo}}</span>
+        <span [class]="infoAnimation">{{infoText}}</span>
     </div>
     <!-- Name -->
-    <div class="app-name-container border">
-        <p hello>{{appName}}</p>
+    <div class="app-name-container border-container">
+        <div class="border top left right">
+            <div class="border-element" activation [activator]="'.hello-container'">{{appName}}</div>
+        </div>
     </div>
     <!-- Hello -->
-    <div class="hello-container border">
-        <p>Witaj w aplikacji {{appName}}!</p>
+    <div class="hello-container border-container">
+        <div class="border top right left">
+            <div class="border-element">Witaj w aplikacji {{appName}}!</div>
+        </div>
+    </div>
+    <!-- Colors -->
+    <div class="color-container border-container">
+        <div class="border bottom left">
+            <button class="border-element" activation [activator]="'.color-list'" color="primary" mat-button>
+                <mat-icon>style</mat-icon>
+            </button>
+        </div>
+        <div class="color-list">
+            <div colors class="color-list-item" id="terg"></div>
+            <div colors class="color-list-item" id="sky"></div>
+            <div colors class="color-list-item" id="bloodlust"></div>
+            <div colors class="color-list-item" id="camo"></div>
+        </div>
     </div>
     <!-- Logout -->
-    <div class="logout-container border">
+    <div class="logout-container">
         <button color="primary" mat-button>
             <mat-icon>exit_to_app</mat-icon>
         </button>

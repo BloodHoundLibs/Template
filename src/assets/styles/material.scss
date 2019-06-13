@@ -1,8 +1,27 @@
-//Variables
-$terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" #0000001f, "text" #ffffff,
-  "alterntive-primary" #fff20099, "dialog" #252222;
-
 //Mixins
+@mixin matInput($color) {
+  .mat-focused {
+    .mat-input-element {
+      caret-color: nth($color, 2) !important;
+    }
+    .mat-form-field-ripple {
+      background-color: nth($color, 2) !important;
+    }
+    .mat-form-field-label {
+      color: nth($color, 2) !important;
+    }
+    .mat-select-arrow {
+      color: nth($color, 2) !important;
+    }
+  }
+  .mat-datepicker-toggle-active {
+    color: nth($color, 2) !important;
+  }
+  .mat-ripple {
+    position: absolute !important;
+  }
+}
+
 @mixin matRadio($color) {
   .mat-radio-button {
     .mat-radio-inner-circle {
@@ -51,8 +70,11 @@ $terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" 
         background-color: nth($color, 2) !important;
       }
     }
-    .mat-ripple-element {
-      background-color: nth($color, 2) !important;
+    .mat-slide-toggle-ripple {
+      position: absolute !important;
+      .mat-ripple-element {
+        background-color: nth($color, 2) !important;
+      }
     }
   }
 }
@@ -141,11 +163,11 @@ $terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" 
 
 @mixin matDialogContainer($textColor, $background, $input) {
   .mat-dialog-container {
-    @include matCheckbox(nth($terg-colors, 1));
+    @include matCheckbox(nth($material, 1));
     background: nth($background, 2) !important;
     color: nth($textColor, 2) !important;
     .mat-form-field {
-        color: nth($input, 2);
+      color: nth($input, 2);
     }
     .mat-input-element {
       caret-color: nth($textColor, 2) !important;
@@ -170,7 +192,7 @@ $terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" 
         color: nth($textColor, 2) !important;
       }
     }
-    @include matSelect(nth($terg-colors, 5), nth($terg-colors, 1));
+    @include matSelect(nth($material, 5), nth($material, 1));
   }
 }
 
@@ -205,6 +227,9 @@ $terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" 
     &:hover {
       cursor: pointer;
     }
+    &.mat-ripple {
+      position: relative !important;
+    }
     .mat-terg-input-file-placeholder {
       text-align: center;
       vertical-align: middle;
@@ -226,17 +251,18 @@ $terg-colors: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" 
   }
 }
 //Main
-html,
-body {
-  @include matRadio(nth($terg-colors, 1));
-  @include matSelectPanel(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 1), nth($terg-colors, 6));
-  @include matSlider(nth($terg-colors, 1));
-  @include matSlideToggle(nth($terg-colors, 1), nth($terg-colors, 6));
-  @include matDatePicker(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 1), nth($terg-colors, 4));
-  @include matCheckbox(nth($terg-colors, 1));
-  @include matMenuPanel(nth($terg-colors, 5), nth($terg-colors, 2));
-  @include matAutocompletePanel(nth($terg-colors, 5), nth($terg-colors, 2), nth($terg-colors, 3));
-  @include matBottomSheetContainer(nth($terg-colors, 5), nth($terg-colors, 2));
-  @include matDialogContainer(nth($terg-colors, 1), nth($terg-colors, 7), nth($terg-colors, 5));
-  @include inputTypeFile(nth($terg-colors, 5), nth($terg-colors, 2));
+& {
+  color: nth(nth($material, 5), 2) !important;
 }
+@include matInput(nth($material, 1));
+@include matRadio(nth($material, 1));
+@include matSelectPanel(nth($material, 5), nth($material, 2), nth($material, 1), nth($material, 6));
+@include matSlider(nth($material, 1));
+@include matSlideToggle(nth($material, 1), nth($material, 6));
+@include matDatePicker(nth($material, 5), nth($material, 2), nth($material, 1), nth($material, 4));
+@include matCheckbox(nth($material, 1));
+@include matMenuPanel(nth($material, 5), nth($material, 2));
+@include matAutocompletePanel(nth($material, 5), nth($material, 2), nth($material, 3));
+@include matBottomSheetContainer(nth($material, 5), nth($material, 2));
+@include matDialogContainer(nth($material, 1), nth($material, 7), nth($material, 5));
+@include inputTypeFile(nth($material, 5), nth($material, 2));

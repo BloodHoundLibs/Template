@@ -1,5 +1,5 @@
 @include mat-core();
 $primary: mat-palette($mat-yellow, A700);
 $accent: mat-palette($mat-grey, A800);
-$warn: mat-palette($mat-red, 600);
+$warn: mat-palette($mat-red, A700);
 $terg-app-theme: mat-dark-theme($primary, $accent, $warn);

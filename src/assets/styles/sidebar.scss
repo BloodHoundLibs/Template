@@ -1,191 +1,384 @@
 //Mixins
-@mixin closed($axis) {
-  @if ($axis == "vertical") {
-    &.close-sidebar {
-      width: 50px;
-      a {
-        width: 50px;
-        transition: width ease 1s;
-        border-radius: 0px;
-        &:hover {
-          position: absolute;
-          width: 190px;
-          border-radius: 4px;
-          .name {
-            width: calc(100% - 50px) !important;
-            opacity: 1 !important;
-          }
-        }
-        .name {
-          width: 0px !important;
-          opacity: 0 !important;
-          transition: none !important;
-        }
-        mat-icon {
-          position: absolute;
-          top: 27%;
-          right: 15px;
-          transform: translate(0%, -50%);
-        }
-      }
+@mixin menuItem-v() {
+  .is-active {
+    visibility: hidden !important;
+    float: left;
+    width: 5px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: nth(nth($palette, 1), 2);
+  }
+  .name {
+    color: nth(nth($palette, 1), 2) !important;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+  mat-icon {
+    clear: left;
+    float: right;
+    margin-top: -40px;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+  }
+  mat-divider {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+
+@mixin menuItem-h() {
+  .is-active {
+    width: 1px;
+    height: 90%;
+    margin-top: 2%;
+    background-color: nth(nth($palette, 3), 2) !important;
+    position: absolute;
+    right: 0px;
+  }
+  .name {
+    color: nth(nth($palette, 1), 2) !important;
+    height: 31px;
+    width: fit-content;
+    padding-right: 10px;
+    vertical-align: middle;
+    line-height: 31px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+  mat-icon {
+    clear: left;
+    float: right;
+    margin-top: -31px;
+    height: 31px;
+    width: 31px;
+    vertical-align: middle;
+    line-height: 31px;
+  }
+  mat-divider {
+    visibility: hidden !important;
+  }
+}
+
+@mixin subMenuItem-h() {
+  .is-active {
+    visibility: hidden !important;
+    float: right;
+    width: 5px;
+    height: 40px;
+    background-color: nth(nth($palette, 1), 2);
+  }
+  .name {
+    color: nth(nth($palette, 1), 2) !important;
+    height: 31px;
+    width: fit-content;
+    padding-right: 10px;
+    vertical-align: middle;
+    line-height: 31px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    padding: 0px 5px;
+  }
+  mat-icon {
+    clear: left;
+    float: right;
+    margin-top: -31px;
+    height: 31px;
+    width: 31px;
+    vertical-align: middle;
+    line-height: 31px;
+  }
+  mat-divider {
+    width: 90%;
+    margin-left: 5%;
+    visibility: visible !important;
+  }
+}
+
+@mixin closedMenuItem-v() {
+  background-color: nth(nth($palette, 4), 2);
+  width: 50px !important;
+  transition: width 0.4s ease;
+  &:hover {
+    width: 200px !important;
+    .name {
+      visibility: visible;
+      opacity: 1 !important;
     }
-  } @else {
-    &.close-sidebar {
+  }
+  .sub-list.active {
+    display: none;
+  }
+  .name {
+    visibility: hidden;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease;
+  }
+  mat-icon {
+    width: 38px !important;
+  }
+  mat-divider {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+@mixin closedMenuItem-h() {
+  .mat-list-item {
+    opacity: 0;
+    visibility: hidden !important;
+  }
+}
+
+@mixin activeRoute-v() {
+  &.activeRoute {
+    background-color: nth(nth($palette, 5), 2) !important;
+    .is-active {
+      visibility: visible !important;
+    }
+  }
+}
+
+@mixin activeRoute-h() {
+  &.activeRoute {
+    background-color: nth(nth($palette, 5), 2) !important;
+    .is-active {
+      background-color: nth(nth($palette, 1), 2) !important;
+    }
+  }
+}
+
+@mixin subItem-v() {
+  .sub {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    @include menuItem-v();
+    @include activeRoute-v();
+    .sub-list {
       height: 0px;
-      border-bottom: #ffd600 solid 0px;
-      .name {
-        width: 0px !important;
-        opacity: 0 !important;
-        transition: none !important;
+      width: 100%;
+      position: relative;
+      left: 0px;
+      top: 0px;
+      background-color: nth(nth($palette, 4), 2) !important;
+      &.active {
+        height: auto !important;
+        .sub-item {
+          height: 40px;
+        }
       }
-      mat-icon {
-        width: 0px !important;
-        opacity: 0 !important;
-        transition: none !important;
-      }
-      .is-active {
-        width: 0px !important;
-        opacity: 0 !important;
-        transition: none !important;
+      .sub-item {
+        background-color: rgba(nth(nth($palette, 7), 2), 0.05);
+        position: relative;
+        top: 0px;
+        left: 5px;
+        height: 0px;
+        width: calc(100% - 5px);
+        .sub-sidebar-list-item {
+          width: 100%;
+          height: 100%;
+          @include menuItem-v();
+          @include activeRoute-v();
+        }
       }
     }
   }
 }
-@mixin list($axis) {
-  @if ($axis == "vertical") {
-    mat-list {
+
+@mixin subItem-h() {
+  .sub {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    padding: 0px 10px;
+    @include menuItem-h();
+    @include activeRoute-h();
+    .sub-list {
+      height: 0px;
       width: 100%;
-      mat-list-item {
-        .mat-list-item-content {
-          padding: 0px !important;
-          a {
-            background-color: #0a0a0a;
-            padding: 0px 15px;
-            width: 100%;
-            height: 100%;
-            vertical-align: middle;
-            line-height: 48px;
-            color: #ffd600;
-            mat-icon {
-              float: right;
-              vertical-align: middle;
-              line-height: 48px;
-            }
-            .name {
-              float: left;
-              width: calc(100% - 50px);
-              opacity: 1;
-              transition: 0.8s ease opacity, width;
-            }
-            .is-active {
-              width: 5px;
-              height: 100%;
-              position: absolute;
-              right: 0px;
-            }
-            &.is-active {
-              background-color: #242424;
-              .is-active {
-                background-color: #ffd600;
-              }
-              mat-divider {
-                border-top-color: #ffd600 !important;
-              }
-            }
-            mat-divider {
-              width: 90% !important;
-              left: 3% !important;
-              border-top-color: #242424 !important;
-            }
-          }
+      position: absolute;
+      left: 0px;
+      top: 34px;
+      background-color: nth(nth($palette, 4), 2) !important;
+      &.active {
+        height: auto !important;
+        .sub-item {
+          height: 31px;
+        }
+      }
+      .sub-item {
+        background-color: nth(nth($palette, 4), 2);
+        position: relative;
+        top: 0px;
+        height: 0px;
+        .sub-sidebar-list-item {
+          width: 100%;
+          height: 100%;
+          @include subMenuItem-h();
+          @include activeRoute-v();
         }
       }
     }
-  } @else {
-    mat-list {
-      width: 100%;
-      height: 40px;
-      padding: 0px !important;
-      mat-list-item {
-        float: left;
-        width: fit-content;
-        height: 40px;
-        .mat-list-item-content {
-          padding: 0px !important;
-          a {
-            padding: 5px 15px;
-            vertical-align: middle;
-            line-height: 23px;
-            color: #ffd600;
-            mat-icon {
-              float: left;
-              vertical-align: middle;
-              line-height: 21px;
-              width: 24px;
-              opacity: 1;
-              margin-right: 10px;
-              transition: 1s ease opacity, width;
-            }
-            .name {
-              float: right;
-              width: fit-content;
-              opacity: 1;
-              transition: 1s ease opacity, width;
-            }
-            .is-active {
-              width: 1px;
-              height: 90% !important;
-              position: absolute;
-              right: 0px;
-              background-color: #242424 !important;
-              opacity: 1;
-              transition: 1s ease opacity, width;
-            }
-            &.is-active {
-              transition: 1s ease opacity, width;
-              background-color: #242424;
-              .is-active {
-                background-color: #ffd600 !important;
+  }
+}
+
+@mixin closed($axis) {
+  @if ($axis == "vertical") {
+    &.active {
+      width: 50px;
+      .sidebar-list-item {
+        &:hover {
+          mat-divider {
+            visibility: hidden;
+          }
+        }
+        @include closedMenuItem-v();
+      }
+      .sub {
+        &:hover {
+          position: absolute;
+          .sub-list.active {
+            display: block;
+            .sub-item {
+              background-color: nth(nth($palette, 4), 2) !important;
+              width: 100% !important;
+              left: 0px !important;
+              .name {
+                visibility: visible;
               }
-            }
-            mat-divider {
-              display: none;
             }
           }
         }
+        .sub-list {
+          position: absolute !important;
+          width: calc(100% - 51px) !important;
+          left: 51px !important;
+          top: 40px !important;
+        }
+        @include closedMenuItem-v();
+      }
+    }
+  } @else {
+    &.active {
+      height: 0px !important;
+      border-bottom: 0px !important;
+      @include closedMenuItem-h();
+    }
+  }
+}
+
+@mixin list($axis) {
+  @if ($axis == "vertical") {
+    .mat-list-item {
+      min-height: 40px !important;
+      height: auto;
+      .mat-list-item-content {
+        min-height: 40px !important;
+        height: fit-content;
+        padding: 0px !important;
+        .sidebar-list-item {
+          @include activeRoute-v();
+          @include menuItem-v();
+          width: 100%;
+          height: 40px;
+        }
+        @include subItem-v();
+      }
+    }
+  } @else {
+    .mat-list-item {
+      float: left;
+      width: 120px;
+      height: 31px;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+      .mat-list-item-content {
+        min-height: 31px;
+        width: 100%;
+        padding: 0px !important;
+        .sidebar-list-item {
+          @include activeRoute-h();
+          @include menuItem-h();
+          width: 100px;
+          height: 31px;
+          padding: 0px 10px;
+        }
+        @include subItem-h();
       }
     }
   }
 }
 //Main style
-.vertical {
-  .sidebar-container {
-    position: absolute;
-    z-index: 5;
-    top: 44px;
-    width: 230px;
-    height: calc(100vh - 44px);
-    background-color: #0a0a0a;
-    transition: ease 1s width;
-    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.08);
-    border-right: #ffd600 solid 1px;
-    @include closed("vertical");
-    @include list("vertical");
+sidebar {
+  #position {
+    &.vertical {
+      .sidebar-container {
+        width: 230px;
+        height: calc(100vh - 44px);
+        transition: ease 0.2s width;
+        border-right: nth(nth($palette, 1), 2) solid 1px;
+        @include closed("vertical");
+        @include list("vertical");
+      }
+    }
+    &.horizontal {
+      .sidebar-container {
+        width: 100%;
+        height: 40px;
+        transition: ease 0.2s height;
+        border-bottom: nth(nth($palette, 1), 2) solid 1px;
+        @include closed("horizontal");
+        @include list("horizontal");
+      }
+    }
+    .sidebar-container {
+      position: absolute;
+      top: 44px;
+      background-color: nth(nth($palette, 4), 2);
+      z-index: 3;
+      box-shadow: 1px 0px 10px nth(nth($palette, 6), 2);
+    }
+  }
+
+  .clear {
+    text-decoration: none;
   }
 }
 
-.horizontal {
-  .sidebar-container {
-    position: absolute;
-    z-index: 5;
-    top: 44px;
-    width: 100%;
-    height: 40px;
-    background-color: #0a0a0a;
-    transition: ease 0.4s height;
-    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
-    border-bottom: #ffd600 solid 1px;
-    @include closed("horizontal");
-    @include list("horizontal");
+//Media
+@media (max-width: 600px) {
+  sidebar {
+    #position {
+      &.vertical {
+        .sidebar-container {
+          height: auto;
+          padding: 10px 0px;
+          width: 200px !important;
+          border-radius: 4px;
+          border: nth(nth($palette, 1), 2) solid 1px;
+          &.active {
+            visibility: hidden;
+            opacity: 0;
+          }
+        }
+      }
+
+      .sidebar-container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        opacity: 1;
+        visibility: visible;
+        background-color: nth(nth($palette, 4), 2);
+        z-index: 3;
+        box-shadow: 1px 0px 10px nth(nth($palette, 6), 2);
+        transform: translate(-50%, -50%);
+      }
+    }
   }
 }

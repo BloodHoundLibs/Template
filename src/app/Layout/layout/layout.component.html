@@ -1,5 +1,6 @@
-<div class="main-container" [ngClass]="{'color': '!color'}">
-  <topbar appName="Zamówienia Niehandlowe" infoAnimation="enabled" textInfo="Aplikacja zostanie zatrzymana o godzinie 10:00"></topbar>
-  <content [positionAxis]="position"></content>
-  <sidebar [positionAxis]="position"></sidebar>
+<div id="main-container" [class.sticky]="layoutConfig.navigation.sticky">
+  <topbar [isSticky]="!layoutConfig.navigation.sticky" [appName]="layoutConfig.topbar.appName"
+    [infoAnimation]="layoutConfig.topbar.infoAnimation" [infoText]="layoutConfig.topbar.infoText"></topbar>
+  <sidebar [positionAxis]="layoutConfig.navigation.position"></sidebar>
+  <content [positionAxis]="layoutConfig.navigation.position"></content>
 </div>

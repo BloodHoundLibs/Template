@@ -1,0 +1,5 @@
+@include mat-core();
+$primary: mat-palette($mat-gray, 50);
+$accent: mat-palette($mat-green, 900);
+$warn: mat-palette($mat-red, A700);
+$camo-app-theme: mat-light-theme($primary, $accent, $warn);

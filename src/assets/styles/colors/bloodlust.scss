@@ -1,0 +1,71 @@
+@include mat-core();
+$mat-black: (
+  50: #615b5b,
+  100: #575151,
+  200: #494444,
+  300: #413c3c,
+  400: #312d2d,
+  500: #242020,
+  600: #181515,
+  700: #110f0f,
+  800: #0e0d0d,
+  900: #000000,
+  A100: #2f2f2f,
+  A200: #272727,
+  A400: #1a1a1a,
+  A700: #0e0e0e,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-blood: (
+  50: #fd6e6e,
+  100: #ff6767,
+  200: #fb5757,
+  300: #ff4d4d,
+  400: #ff4242,
+  500: #fd3434,
+  600: #ff2727,
+  700: #ff1c1c,
+  800: #ff0e0e,
+  900: #ff0000,
+  A100: #800000,
+  A200: #990000,
+  A400: #b90000,
+  A700: #db0000,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$primary: mat-palette($mat-blood, A400);
+$accent: mat-palette($mat-black, 900);
+$warn: mat-palette($mat-black, A700);
+$bloodlust-app-theme: mat-dark-theme($primary, $accent, $warn);

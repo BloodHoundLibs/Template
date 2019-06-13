@@ -1,0 +1,5 @@
+@include mat-core();
+$primary: mat-palette($mat-gray, 50);
+$accent: mat-palette($mat-blue, 700);
+$warn: mat-palette($mat-red, A700);
+$sky-app-theme: mat-light-theme($primary, $accent, $warn);

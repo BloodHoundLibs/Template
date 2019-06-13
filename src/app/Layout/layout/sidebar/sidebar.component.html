@@ -1,14 +1,32 @@
-<div [class]="positionAxis">
-    <div class="sidebar-container close-sidebar">
+<div id="position" [class]="positionAxis">
+    <div class="sidebar-container active">
         <mat-list role="list" color="primary">
-            <mat-list-item *ngFor="let menuItem of menuItems.getMenuItem() | async">
+            <mat-list-item role="listitem" *ngFor="let menuItem of menuItems.getMenuItem() | async">
                 <a class="clear sidebar-list-item" matRipple routes [routerLink]="menuItem.routerLink"
                     *ngIf="menuItem.type === 'routerLink'">
                     <span class="is-active"></span>
-                    <span class="name">{{ menuItem.name }}</span>
+                    <div class="name">{{ menuItem.name }}</div>
                     <mat-icon color="primary">{{ menuItem.icon }}</mat-icon>
                     <mat-divider></mat-divider>
                 </a>
+                <div (click)="changeArrow($event)" activation activator=".sub-list" isInside="true" class="sub"
+                    *ngIf="menuItem.type === 'sub'">
+                    <span class="is-active"></span>
+                    <div class="name">{{ menuItem.name }}</div>
+                    <mat-icon color="primary">{{ arrow }}</mat-icon>
+                    <mat-divider></mat-divider>
+                    <div class="sub-list" role="list" color="primary">
+                        <div class="sub-item" *ngFor="let childItem of menuItem.children">
+                            <a class="clear sub-sidebar-list-item" matRipple routes
+                                [routerLink]="['/', menuItem.state, childItem.state]">
+                                <span class="is-active"></span>
+                                <div class="name">{{ childItem.name }}</div>
+                                <mat-icon color="primary">{{ childItem.icon }}</mat-icon>
+                                <mat-divider></mat-divider>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </mat-list-item>
         </mat-list>
     </div>

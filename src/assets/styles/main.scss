@@ -1,17 +1,76 @@
 //Imports
 @import "~@angular/material/theming";
-@import "./adaptive.scss";
-@import "./app.scss";
-@import "./content.scss";
-@import "./topbar.scss";
-@import "./sidebar.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./spinner.scss";
-@import "./material.scss";
 //Colors
-.color {
-  @import "./colors/terg.scss";
-  @include angular-material-theme($terg-app-theme);
+
+body {
+  &.terg {
+    $material: "primary" #ffd600, "secondary" #424242, "third" #505050, "border" #0000001f, "text" #ffffff,
+      "alterntive-primary" #ffd60099, "dialog" #252222;
+    @import "./material.scss";
+    #main-container.terg {
+      @import "./colors/terg.scss";
+      @include angular-material-theme($terg-app-theme);
+      $palette: "primary" #ffd600, "secondary" #000000, "content-bg" #242424, "sidebar-bg" #0a0a0a,
+        "active-route-bg" #110f0f, "box-shadow" #00000080, "text" #ffffff, "dialog" #252222, "scroll" #ffd600;
+      @import "./app.scss";
+      @import "./content.scss";
+      @import "./topbar.scss";
+      @import "./sidebar.scss";
+      @import "./adaptive.scss";
+    }
+  }
+  &.sky {
+    $material: "primary" #0d47a1, "secondary" #f5f5f5, "third" #e0e0e0, "border" #ffffff1f, "text" #000000,
+      "alterntive-primary" #0d47a199, "dialog" #ededed;
+    @import "./material.scss";
+    #main-container.sky {
+      @import "./colors/sky.scss";
+      @include angular-material-theme($sky-app-theme);
+      $palette: "primary" #f5f5f5, "secondary" #0d47a1, "content-bg" #e5e5e5, "sidebar-bg" #1565c0,
+        "active-route-bg" #003c8f, "box-shadow" #0d47a180, "text" #000000, "dialog" #002171, "scroll" #003c8f;
+      @import "./app.scss";
+      @import "./content.scss";
+      @import "./topbar.scss";
+      @import "./sidebar.scss";
+      @import "./adaptive.scss";
+    }
+  }
+  &.bloodlust {
+    $material: "primary" #b90000, "secondary" #424242, "third" #505050, "border" #0000001f, "text" #ffffff,
+      "alterntive-primary" #b9000099, "dialog" #252222;
+    @import "./material.scss";
+    #main-container.bloodlust {
+      @import "./colors/bloodlust.scss";
+      @include angular-material-theme($bloodlust-app-theme);
+      $palette: "primary" #b90000, "secondary" #000000, "content-bg" #242424, "sidebar-bg" #0a0a0a,
+        "active-route-bg" #110f0f, "box-shadow" #00000080, "text" #ffffff, "dialog" #3d3d3d, "scroll" #b90000;
+      @import "./app.scss";
+      @import "./content.scss";
+      @import "./topbar.scss";
+      @import "./sidebar.scss";
+      @import "./adaptive.scss";
+    }
+  }
+  &.camo {
+    $material: "primary" #1b5e20, "secondary" #f5f5f5, "third" #e0e0e0, "border" #ffffff1f, "text" #000000,
+      "alterntive-primary" #1b5e2099, "dialog" #ededed;
+    @import "./material.scss";
+    #main-container.camo {
+      @import "./colors/camo.scss";
+      @include angular-material-theme($camo-app-theme);
+      $palette: "primary" #f5f5f5, "secondary" #1b5e20, "content-bg" #e5e5e5, "sidebar-bg" #33691e,
+        "active-route-bg" #003d00, "box-shadow" #00330080, "text" #000000, "dialog" #003300, "scroll" #1b5e20;
+      @import "./app.scss";
+      @import "./content.scss";
+      @import "./topbar.scss";
+      @import "./sidebar.scss";
+      @import "./adaptive.scss";
+    }
+  }
 }
+@import "./responsive.scss";
 $custom-typography: mat-typography-config(
   $font-family: "Poppins"
 );

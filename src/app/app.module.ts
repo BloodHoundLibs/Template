@@ -13,9 +13,9 @@ import { SidebarComponent } from './Layout/layout/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { TestModule } from './Main/test/test.module';
 import { RoutesDirective } from './Layout/directives/routes.directive';
-import { SidebarDirective } from './Layout/directives/sidebar.directive';
-import { HelloDirective } from './Layout/directives/hello.directive';
 import { PerfectScrollbarConfigInterface, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { ColorsDirective } from './Layout/directives/colors.directive';
+import { ActivationDirective } from './Layout/directives/activation.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -30,8 +30,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ContentComponent,
     SidebarComponent,
     RoutesDirective,
-    SidebarDirective,
-    HelloDirective
+    ColorsDirective,
+    ActivationDirective
   ],
   imports: [
     BrowserModule,

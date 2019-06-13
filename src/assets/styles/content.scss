@@ -1,21 +1,49 @@
 //Mixins
 @mixin pageWrapper() {
   .page-wrapper {
-    background-color: #242424;
+    background-color: nth(nth($palette, 3), 2);
     height: calc(100vh - 44px);
+    z-index: 12;
+    overflow: auto;
+    transition: height 0.2s ease;
     .page-content {
       padding: 10px;
-      height: -webkit-fill-available;
-      overflow: auto;
+      min-height: calc(100% - 51px);
+    }
+    footer {
+      overflow: hidden;
+      background-color: rgba(nth(nth($palette, 2), 2), 0.5);
+      color: rgba(nth(nth($palette, 1), 2), 0.8);
+      height: 30px;
+      padding-right: 10px;
+      text-align: right;
+      vertical-align: middle;
+      line-height: 30px;
+      box-shadow: 0px -1px 3px 0px nth(nth($palette, 6), 2);
+      font-size: 11px;
+      span {
+        color: nth(nth($palette, 1), 2);
+      }
     }
   }
 }
 //Main style
-content .vertical {
-  margin-left: 50px;
-  @include pageWrapper();
+content {
+  .vertical {
+    margin-left: 50px;
+    transition: margin 0.2s ease;
+    @include pageWrapper();
+  }
+  .horizontal {
+    transition: margin 0.2s ease;
+    @include pageWrapper();
+  }
 }
 
-content .horizontal {
-  @include pageWrapper();
+@media (max-width: 600px) {
+  content {
+    .vertical {
+      margin-left: 0px !important;
+    }
+  }
 }

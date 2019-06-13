@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
-import { TestComponent } from './test/test.component';
+import { CommonModule } from '@angular/common';
 import { TestRoutingModule } from './test.routing';
+import { TestsComponent, BottomSheetOverviewExampleSheet, DialogOverviewExampleDialog } from './testss/test.component';
 import { MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatDatepickerModule, MatCheckboxModule, MatMenuModule, MatButtonModule, MatCardModule, MatListModule, MatExpansionModule, MatGridListModule, MatStepperModule, MatTabsModule, MatTreeModule, MatButtonToggleModule, MatBadgeModule, MatAutocompleteModule, MatChipsModule, MatIconModule, MatBottomSheetModule, MatProgressBarModule, MatProgressSpinnerModule, MatDialogModule, MatSnackBarModule, MatTooltipModule, MatPaginatorModule, MatTableModule, MatSortModule, MatRippleModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TestsComponent, BottomSheetOverviewExampleSheet, DialogOverviewExampleDialog } from './testss/test.component';
-import { CommonModule } from '@angular/common';
-
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  declarations: [TestComponent, TestsComponent, BottomSheetOverviewExampleSheet, DialogOverviewExampleDialog],
+  declarations: [TestsComponent,TestComponent,BottomSheetOverviewExampleSheet,DialogOverviewExampleDialog],
   imports: [
     CommonModule,
     TestRoutingModule,
-    MatCardModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,

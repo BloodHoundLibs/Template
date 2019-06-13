@@ -1,11 +1,3 @@
-//Main Style
-html,
-body {
-  .row {
-    display: flex;
-    height: inherit;
-  }
-}
 //Medias
 @media only screen and (max-width: 870px) {
   mat-toolbar {
@@ -13,9 +5,81 @@ body {
       .logo-container {
         display: none !important;
       }
+      .home-container {
+        display: block !important;
+      }
       .menu-container {
         margin-left: -20px !important;
         margin-right: 100px !important;
+        z-index: 8 !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  mat-toolbar {
+    &.topbar {
+      .app-name-container {
+        margin-left: -141px !important;
+        margin-right: -82px !important;
+        z-index: 7 !important;
+      }
+      .color-container {
+        margin-left: auto;
+      }
+      .menu-container {
+        .border.right {
+          border-right: 0px solid transparent !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  mat-toolbar {
+    &.topbar {
+      .app-name-container {
+        margin-left: -109px !important;
+        z-index: -1 !important;
+        font-size: 3.3vw !important;
+        pointer-events: none !important;
+        .border {
+          &.right {
+            border-right: 0px solid transparent !important;
+          }
+          &.left {
+            border-left: 0px solid transparent !important;
+          }
+        }
+      }
+      .hello-container {
+        display: none !important;
+      }
+      .info-container {
+        background-color: nth(nth($palette, 2), 2);
+      }
+      .color-container {
+        margin-left: auto;
+        .border.left {
+          border-left: 0px solid transparent !important;
+        }
+      }
+      .menu-container {
+        .border.right {
+          border-right: 0px solid transparent !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  mat-toolbar {
+    &.topbar {
+      .app-name-container {
+        opacity: 0 !important;
       }
     }
   }

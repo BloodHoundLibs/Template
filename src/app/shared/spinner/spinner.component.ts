@@ -20,10 +20,9 @@ import { SpinnerService } from '../services/spinner.service';
 
 @Component({
     selector: 'spinner',
-    template: `<div class="spinner"><div [class]="isVisible$|async"><div class="preloader" [ngStyle]="{'background-color': backgroundColor}">
+    template: `<div class="preloader" *ngIf="isVisible$|async" [ngStyle]="{'background-color': backgroundColor}">
     <mat-spinner mode="indeterminate"></mat-spinner>
-    </div>  
-</div></div>`,
+    </div>`,
     encapsulation: ViewEncapsulation.None
 })
 export class SpinnerComponent {
