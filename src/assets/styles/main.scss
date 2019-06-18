@@ -1,7 +1,7 @@
 //Imports
 @import "~@angular/material/theming";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "./spinner.scss";
+@import "spinner.scss";
 //Colors
 
 body {
@@ -70,7 +70,7 @@ body {
     }
   }
 }
-@import "./responsive.scss";
+@import "responsive.scss";
 $custom-typography: mat-typography-config(
   $font-family: "Poppins"
 );

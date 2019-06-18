@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MenuItems } from 'src/app/shared/menu.items';
+import { MenuItems } from '../../../shared/menu.items';
 
 @Component({
   selector: 'sidebar',
